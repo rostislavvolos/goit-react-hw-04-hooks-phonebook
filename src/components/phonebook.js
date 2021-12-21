@@ -6,69 +6,12 @@ import ContactList from './ContactList/Contactlist';
 import FilterList from './FilterList/FilterList';
 import useHookLocalStorage from '../hooks-folder/useHookLocalStorage'
 
-// export default function PhoneBook () {
-//   const [contacts, setContacts] = useState(() => {
-//     return JSON.parse(window.localStorage.getItem("contacts")) ?? [];
-//   });
-//   const [filter, setFilter] = useState("");
-
-//    useEffect(() => {
-//     window.localStorage.setItem("contacts", JSON.stringify(contacts));
-//   }, [contacts]);
-// }
-
-
 
 
 
 const PhoneBook = () => {
-  // state = {
-  //     contacts: [
-  //     ],
-  //     filter: ''
-  //   }
   const [contacts, setContacts] = useHookLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
-
-  // componentDidMount() {
-  //   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-
-  //   if(parsedContacts){
-  //   this.setState({contacts: parsedContacts});
-  //   }
-  //  }
-
-
-
-  //        componentDidUpdate (prevState, prevProps) {
-
-  //          if (prevState !== this.state.contacts) {
-  //            localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-  //          }
-  //        }
-
-  // useEffect(() => {
-  //   const parsedContacts = JSON.parse(localStorage.getItem('contacts'))
-
-  //   if (parsedContacts) {
-  //     setContacts({ contacts: parsedContacts })
-  //   } else {
-  //   localStorage.setItem('contacts', JSON.stringify(setContacts))
-  //   }
-  // }, [contacts])
-
-  useEffect(() => {
-    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log(parsedContacts);
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
 
   const getFilteredContacts = () => {
     return contacts.filter(contact =>
